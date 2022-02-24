@@ -1,6 +1,6 @@
-é utilizada para mudar tipo um style no css
+This is used for add and remove elements of DOM
 
-exemplo:
+exemple:
 
 ```ts
 @Directive({
@@ -13,7 +13,7 @@ export class RedDirective {
 }
 ```
 
-utilizando:
+using:
 
 ```html
 <i class="material-icons" appRed> favorite </i>
