@@ -11,8 +11,4 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-/*   public test(): void {
-    this.headerService.createAlert()
-  } */
-} 
+}
