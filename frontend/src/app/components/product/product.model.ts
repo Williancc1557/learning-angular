@@ -3,3 +3,8 @@ export interface Product {
     name: string;
     price: number;
 }
+
+export interface RequestResponse {
+    statusCode: number;
+    body: Array<Product>
+}

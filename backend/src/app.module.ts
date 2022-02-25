@@ -1,9 +1,8 @@
 import { Module } from "@nestjs/common";
-import { SendProductModule } from "./api/save-product/save-product.module";
-import { FindAllProductModule } from './api/find-all-product/find-all-product.module';
+import { ProductModule } from "./api/product/product.module";
 
 @Module({
-  imports: [SendProductModule, FindAllProductModule],
+  imports: [ProductModule],
   controllers: [],
   providers: [],
 })

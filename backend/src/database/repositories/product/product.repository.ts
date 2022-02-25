@@ -1,5 +1,6 @@
+import type { ChangeProductDto } from "../../../api/product/change.dto";
+import { DatabaseOrm } from "src/database/repositories/database.service";
 import type { ProductEntity } from "../../entities/product";
-import { DatabaseOrm } from "../database.service";
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
@@ -15,5 +16,17 @@ export class ProductRepository {
 
     public findAll(): Array<ProductEntity> {
         return this.databaseOrm.findAll();
+    }
+
+    public findOne(id: number): ProductEntity {
+        return this.databaseOrm.findOne(id);
+    }
+
+    public delete(id: number): void {
+        return this.databaseOrm.delete(id);
+    }
+
+    public change(changeProductDto: ChangeProductDto): void {
+        return this.databaseOrm.change(changeProductDto);
     }
 }

@@ -1,4 +1,4 @@
-import { Product } from './product.model';
+import { Product, RequestResponse } from './product.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from "@angular/material/snack-bar"
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  baseUrl = ""
+  baseUrl = "http://localhost:3000"
 
   constructor(
     private readonly snackBar: MatSnackBar,
@@ -24,6 +24,14 @@ export class ProductService {
   }
 
   create(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrl, product)
+    return this.http.post<Product>(this.baseUrl+ "/save", product)
+  }
+
+  read(): Observable<RequestResponse> {
+   return this.http.get<RequestResponse>(this.baseUrl + "/find")
+  }
+
+  readById(id: string): Observable<RequestResponse> {
+    return this.http.get<RequestResponse>(this.baseUrl + "/find")
   }
 }

@@ -1,0 +1,27 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+div table {
+  width: 90%;
+}
+
+.edit > i {
+  color: #d9cd26;
+  margin-right: 10px;
+}
+
+.delete > i {
+  color: #e35e6b;
+}

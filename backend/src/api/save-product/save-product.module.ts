@@ -7,4 +7,4 @@ import { SaveProductController } from "./save-product.controller";
     controllers: [SaveProductController],
     providers: [ProductRepository, DatabaseOrm],
 })
-export class SendProductModule {}
+export class SaveProductModule {}
