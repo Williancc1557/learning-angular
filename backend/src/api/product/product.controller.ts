@@ -17,7 +17,7 @@ export class ProductController {
         };
     }
 
-    @Get("findbyid/:id")
+    @Get("find/:id")
     public findById(@Param("id") id: number) {
         return this.productRepository.findOne(id);
     }

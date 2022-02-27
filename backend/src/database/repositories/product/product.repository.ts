@@ -26,7 +26,7 @@ export class ProductRepository {
         return this.databaseOrm.delete(id);
     }
 
-    public change(changeProductDto: ChangeProductDto): void {
+    public change(changeProductDto: ChangeProductDto): ProductEntity {
         return this.databaseOrm.change(changeProductDto);
     }
 }

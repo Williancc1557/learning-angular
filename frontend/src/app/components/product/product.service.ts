@@ -31,7 +31,15 @@ export class ProductService {
    return this.http.get<RequestResponse>(this.baseUrl + "/find")
   }
 
-  readById(id: string): Observable<RequestResponse> {
-    return this.http.get<RequestResponse>(this.baseUrl + "/find")
+  readById(id: string): Observable<Product> {
+    return this.http.get<Product>(this.baseUrl + `/find/${id}`)
+  }
+
+  update(product: Product): Observable<Product> {
+    return this.http.put<Product>(this.baseUrl + "/change", product)
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(this.baseUrl + `/delete/${id}`)
   }
 }

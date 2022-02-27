@@ -1,6 +1,7 @@
 import type { ChangeProductDto } from "../../api/product/change.dto";
 import type { ProductEntity } from "./../entities/product";
 import { Injectable } from "@nestjs/common";
+import { find } from "rxjs";
 
 
 const database: Array<ProductEntity> = [];
@@ -8,9 +9,13 @@ const database: Array<ProductEntity> = [];
 @Injectable()
 export class DatabaseOrm {
     private static generateSequenceId() {
-        const databaseLength: number = database.length;
 
-        const id = databaseLength + 1  // eslint-disable-line
+        const lastItem = database.slice(-1)[0]
+        console.log(lastItem);
+
+        if (!lastItem) return 1
+
+        const id = lastItem.id + 1 // eslint-disable-line
 
         return id;
     }
@@ -31,23 +36,25 @@ export class DatabaseOrm {
     }
 
     public findOne(id: number): ProductEntity {
-        return database.find((product: ProductEntity) => product.id === id);
+        const product = database.find(product => product.id == id);
+
+        return product
     }
 
     public delete(id: number): void {
-        const productPosition = id - 1; // eslint-disable-line
+        const productPosition = database.findIndex(product => product.id == id)
 
         database.splice(productPosition, 1); // eslint-disable-line
     }
 
-    public change(productBody: ChangeProductDto): void {
-        const product = this.findOne(productBody.id);
+    public change(productBody: ChangeProductDto): ProductEntity {
+        const index = database.findIndex(product => product.id == productBody.id)
 
-        this.delete(product.id);
+        const findProduct = this.findOne(productBody.id)
 
-        product.name = productBody.name || product.name;
-        product.price = productBody.price || product.price;
+        database[index].name = productBody.name || findProduct.name;
+        database[index].price = productBody.price || findProduct.price;
 
-        database.push(product);
+        return database[index]
     }
 }
